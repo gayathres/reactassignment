@@ -1,10 +1,15 @@
 var React = require('react');
-var LeftSideBar = require('./LeftPane');
+var LeftPane = require('./LeftPane');
+var RightPane = require('./RightPane');
 var loadedData = false;
+var loadedMessages = false;
+var loadedSpecificMessages = false;
+var messagearray = [];
+
 var GmailBox = React.createClass({
  getInitialState: function()
    {
-     return({allLabelsData:[]});
+     return({allLabelsData:[],allmessagesData:[],messagesData:[]});
    },
  gmailLogin: function()
  {
@@ -22,6 +27,7 @@ var GmailBox = React.createClass({
 
        try
        {
+
            if (win.document.URL.indexOf(REDIRECT) != -1)
            {
                window.clearInterval(pollTimer);
@@ -29,7 +35,6 @@ var GmailBox = React.createClass({
                acToken =   gup(url, 'access_token');
                tokenType = gup(url, 'token_type');
                expiresIn = gup(url, 'expires_in');
-               console.log(acToken);
                localStorage.setItem('gToken',acToken);
                localStorage.setItem('gTokenType',tokenType);
                localStorage.setItem('gExprireIn',expiresIn);
@@ -52,8 +57,9 @@ var GmailBox = React.createClass({
        }
    }, 500);
    this.allLabels();
- },
+   this.allmessages();
 
+ },
 
  allLabels: function()
  {
@@ -70,6 +76,8 @@ var GmailBox = React.createClass({
       {
         this.setState({allLabelsData:data.labels});
         loadedData=true;
+        console.log("labeldata length"+ this.state.allLabelsData.length);
+        console.log("labeldata"+ this.state.allLabelsData);
       }.bind(this),
       error: function(xhr, status, err) {
         console.error(err.toString());
@@ -78,20 +86,77 @@ var GmailBox = React.createClass({
 
  },
 
+ allmessages: function()
+ {
+     var accessToken = localStorage.getItem('gToken');
+     console.log(accessToken);
+     $.ajax({
+      url: 'https://www.googleapis.com/gmail/v1/users/me/messages?labelIds=INBOX&maxResults=10&key={AIzaSyAM1J8nRheoY_O5pPwiXZRuDEgBMkWq0OQ}',
+      dataType: 'json',
+      type: 'GET',
+      async: 'false',
+
+      beforeSend: function (request)
+      {
+        request.setRequestHeader("Authorization", "Bearer "+accessToken);
+      },
+      success: function(data)
+      {
+        this.setState({allmessagesData:data.messages});
+        loadedMessages=true;
+        console.log(this.state.allmessagesData.length);
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.error(err.toString());
+      }.bind(this)
+   });
+this.allmessagesinfo();
+ },
+
+ allmessagesinfo: function()
+ {
+   for(i=0;i<this.state.allmessagesData.length;i++){
+     var accessToken = localStorage.getItem('gToken');
+
+     console.log(accessToken);
+     $.ajax({
+      url: 'https://www.googleapis.com/gmail/v1/users/me/messages/'+ this.state.allmessagesData[i].id +'?key={AIzaSyAM1J8nRheoY_O5pPwiXZRuDEgBMkWq0OQ}',
+      dataType: 'json',
+      type: 'GET',
+
+      beforeSend: function (request)
+      {
+        request.setRequestHeader("Authorization", "Bearer "+accessToken);
+      },
+      success: function(data)
+      {
+        messagearray.push(data);
+        this.setState({messagesData:messagearray});
+        loadedSpecificMessages=true;
+        console.log("Messagedata length"+ this.state.messagesData.length);
+        console.log("Messagedata"+ this.state.messagesData);
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.error(err.toString());
+      }.bind(this)
+   });
+}
+ },
 
  render:function()
  {
    var leftPanel;
    var rightPanel;
 
-   if(loadedData){
-     leftPanel =  <LeftSideBar ldata={this.state.allLabelsData}/>
-     rightPanel='  Work In Progress..........';
+   if(loadedMessages){
+     leftPanel =  <LeftPane ldata = {this.state.allLabelsData}/>
+     rightPanel= <RightPane rdata= {this.state.messagesData} />
    }
 
      return(
        <div className="GmailBox">
            <div className="container-fluid">
+
              <div className="row">
                  <div className="col-lg-1">
                   <button id="authorize-button" onClick={this.gmailLogin} className="btn btn-success pull-left">SignIn</button>

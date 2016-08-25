@@ -1,0 +1,42 @@
+button {
+
+     border-bottom:1px solid #444;
+     cursor: pointer;
+     margin-top: 15px;
+}
+
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    border-color: grey;
+}
+td {
+    text-align: left;
+    padding: 3px;
+    width: 320px;!important
+    overflow:hidden;
+    word-wrap:break-word;
+}
+table{
+  table-layout:fixed;
+  width:960px;
+}
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
+}
+.row{
+  padding-top: 10px;
+}

@@ -1,0 +1,230 @@
+{
+ "labels": [
+  {
+   "id": "CATEGORY_PERSONAL",
+   "name": "CATEGORY_PERSONAL",
+   "type": "system"
+  },
+  {
+   "id": "Label_1",
+   "name": "Personal",
+   "messageListVisibility": "show",
+   "labelListVisibility": "labelShow",
+   "type": "user"
+  },
+  {
+   "id": "Label_27",
+   "name": "Bills/Personal Loan",
+   "type": "user"
+  },
+  {
+   "id": "CATEGORY_SOCIAL",
+   "name": "CATEGORY_SOCIAL",
+   "messageListVisibility": "hide",
+   "labelListVisibility": "labelShow",
+   "type": "system"
+  },
+  {
+   "id": "Label_23",
+   "name": "Bills/EB Bill",
+   "messageListVisibility": "show",
+   "labelListVisibility": "labelShow",
+   "type": "user"
+  },
+  {
+   "id": "Label_25",
+   "name": "Bills/LIC Bill",
+   "messageListVisibility": "show",
+   "labelListVisibility": "labelShow",
+   "type": "user"
+  },
+  {
+   "id": "Label_15",
+   "name": "Imp/Documents",
+   "messageListVisibility": "show",
+   "labelListVisibility": "labelShow",
+   "type": "user"
+  },
+  {
+   "id": "Label_17",
+   "name": "Imp/Eb bill",
+   "type": "user"
+  },
+  {
+   "id": "Label_9",
+   "name": "Imp/CC bill",
+   "messageListVisibility": "show",
+   "labelListVisibility": "labelShow",
+   "type": "user"
+  },
+  {
+   "id": "Label_24",
+   "name": "Bills/Debit Card Statement",
+   "messageListVisibility": "show",
+   "labelListVisibility": "labelShow",
+   "type": "user"
+  },
+  {
+   "id": "Label_6",
+   "name": "Novel",
+   "messageListVisibility": "show",
+   "labelListVisibility": "labelShow",
+   "type": "user"
+  },
+  {
+   "id": "Label_21",
+   "name": "Bills/CC bill",
+   "messageListVisibility": "show",
+   "labelListVisibility": "labelShow",
+   "type": "user"
+  },
+  {
+   "id": "CATEGORY_FORUMS",
+   "name": "CATEGORY_FORUMS",
+   "type": "system"
+  },
+  {
+   "id": "Label_28",
+   "name": "Bills/IT doc",
+   "type": "user"
+  },
+  {
+   "id": "Label_18",
+   "name": "Bills",
+   "messageListVisibility": "show",
+   "labelListVisibility": "labelShow",
+   "type": "user"
+  },
+  {
+   "id": "Label_19",
+   "name": "Bills/DataCard",
+   "messageListVisibility": "show",
+   "labelListVisibility": "labelShow",
+   "type": "user"
+  },
+  {
+   "id": "Label_11",
+   "name": "Imp/Airtel 3G bill",
+   "messageListVisibility": "show",
+   "labelListVisibility": "labelShow",
+   "type": "user"
+  },
+  {
+   "id": "IMPORTANT",
+   "name": "IMPORTANT",
+   "messageListVisibility": "hide",
+   "labelListVisibility": "labelShow",
+   "type": "system"
+  },
+  {
+   "id": "Label_26",
+   "name": "Bills/CC Loan Statement",
+   "messageListVisibility": "show",
+   "labelListVisibility": "labelShow",
+   "type": "user"
+  },
+  {
+   "id": "Label_5",
+   "name": "Nice forward",
+   "messageListVisibility": "show",
+   "labelListVisibility": "labelShow",
+   "type": "user"
+  },
+  {
+   "id": "Label_20",
+   "name": "Bills/PhoneBill",
+   "messageListVisibility": "show",
+   "labelListVisibility": "labelShow",
+   "type": "user"
+  },
+  {
+   "id": "Label_10",
+   "name": "Imp/Debit Statement",
+   "messageListVisibility": "show",
+   "labelListVisibility": "labelShow",
+   "type": "user"
+  },
+  {
+   "id": "CATEGORY_UPDATES",
+   "name": "CATEGORY_UPDATES",
+   "messageListVisibility": "hide",
+   "labelListVisibility": "labelShow",
+   "type": "system"
+  },
+  {
+   "id": "Label_16",
+   "name": "Imp/Study materials",
+   "messageListVisibility": "show",
+   "labelListVisibility": "labelShow",
+   "type": "user"
+  },
+  {
+   "id": "CHAT",
+   "name": "CHAT",
+   "messageListVisibility": "hide",
+   "labelListVisibility": "labelShow",
+   "type": "system"
+  },
+  {
+   "id": "SENT",
+   "name": "SENT",
+   "messageListVisibility": "hide",
+   "labelListVisibility": "labelShow",
+   "type": "system"
+  },
+  {
+   "id": "INBOX",
+   "name": "INBOX",
+   "messageListVisibility": "hide",
+   "labelListVisibility": "labelShow",
+   "type": "system"
+  },
+  {
+   "id": "TRASH",
+   "name": "TRASH",
+   "messageListVisibility": "hide",
+   "labelListVisibility": "labelHide",
+   "type": "system"
+  },
+  {
+   "id": "Label_7",
+   "name": "Imp",
+   "messageListVisibility": "show",
+   "labelListVisibility": "labelShow",
+   "type": "user"
+  },
+  {
+   "id": "CATEGORY_PROMOTIONS",
+   "name": "CATEGORY_PROMOTIONS",
+   "messageListVisibility": "hide",
+   "labelListVisibility": "labelShow",
+   "type": "system"
+  },
+  {
+   "id": "DRAFT",
+   "name": "DRAFT",
+   "messageListVisibility": "hide",
+   "labelListVisibility": "labelShow",
+   "type": "system"
+  },
+  {
+   "id": "SPAM",
+   "name": "SPAM",
+   "messageListVisibility": "hide",
+   "labelListVisibility": "labelHide",
+   "type": "system"
+  },
+  {
+   "id": "STARRED",
+   "name": "STARRED",
+   "messageListVisibility": "hide",
+   "labelListVisibility": "labelShow",
+   "type": "system"
+  },
+  {
+   "id": "UNREAD",
+   "name": "UNREAD",
+   "type": "system"
+  }
+ ]
+}
