@@ -9,8 +9,10 @@ var messagearray = [];
 var GmailBox = React.createClass({
  getInitialState: function()
    {
-     return({allLabelsData:[],allmessagesData:[],messagesData:[]});
+     return({allLabelsData:[],allmessagesData:[],messagesData:[],labelType: "INBOX"});
    },
+
+
  gmailLogin: function()
  {
    var acToken, tokenType, expiresIn;
@@ -57,7 +59,7 @@ var GmailBox = React.createClass({
        }
    }, 500);
    this.allLabels();
-   this.allmessages();
+   this.allmessages(this.state.labelType);
 
  },
 
@@ -86,12 +88,12 @@ var GmailBox = React.createClass({
 
  },
 
- allmessages: function()
+ allmessages: function(labelType)
  {
      var accessToken = localStorage.getItem('gToken');
      console.log(accessToken);
      $.ajax({
-      url: 'https://www.googleapis.com/gmail/v1/users/me/messages?labelIds=INBOX&maxResults=10&key={AIzaSyAM1J8nRheoY_O5pPwiXZRuDEgBMkWq0OQ}',
+      url: 'https://www.googleapis.com/gmail/v1/users/me/messages?labelIds='+labelType+'&maxResults=10&key={AIzaSyAM1J8nRheoY_O5pPwiXZRuDEgBMkWq0OQ}',
       dataType: 'json',
       type: 'GET',
       async: 'false',
@@ -100,11 +102,14 @@ var GmailBox = React.createClass({
       {
         request.setRequestHeader("Authorization", "Bearer "+accessToken);
       },
+
       success: function(data)
       {
+
         this.setState({allmessagesData:data.messages});
         loadedMessages=true;
         console.log(this.state.allmessagesData.length);
+        this.messagearray =[];
       }.bind(this),
       error: function(xhr, status, err) {
         console.error(err.toString());
@@ -123,7 +128,7 @@ this.allmessagesinfo();
       url: 'https://www.googleapis.com/gmail/v1/users/me/messages/'+ this.state.allmessagesData[i].id +'?key={AIzaSyAM1J8nRheoY_O5pPwiXZRuDEgBMkWq0OQ}',
       dataType: 'json',
       type: 'GET',
-
+      async: 'false',
       beforeSend: function (request)
       {
         request.setRequestHeader("Authorization", "Bearer "+accessToken);
@@ -149,7 +154,7 @@ this.allmessagesinfo();
    var rightPanel;
 
    if(loadedMessages){
-     leftPanel =  <LeftPane ldata = {this.state.allLabelsData}/>
+     leftPanel =  <LeftPane ldata = {this.state.allLabelsData} lfun = {this.allmessages} />
      rightPanel= <RightPane rdata= {this.state.messagesData} />
    }
 
@@ -159,7 +164,7 @@ this.allmessagesinfo();
 
              <div className="row">
                  <div className="col-lg-1">
-                  <button id="authorize-button" onClick={this.gmailLogin} className="btn btn-success pull-left">SignIn</button>
+                  <button id="authorize-button" onClick={this.gmailLogin} className="btn btn-success pull-left">Login</button>
                   </div>
                   <div className="col-lg-8 pull-right">
                     <h2>ReactMails</h2>
