@@ -10,7 +10,7 @@ var LabelComponent = React.createClass({
   render: function(){
     return (
       <div>
-      <a className = "btn btn-link" onClick = {this.handleClick} >{this.props.labelname}</a>
+      <button className = "btn btn-link" onClick ={this.handleClick}>{this.props.labelname}</button>
       </div>
     )
   }
