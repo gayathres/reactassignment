@@ -154,7 +154,7 @@ var GmailBox = React.createClass({
           <div className="container-fluid col-lg-12">
             <div className="row">
                  <div className="col-lg-8 pull-left">
-                  <img src= {images/gmail.jpg} height="50px" width="70px" alt="Gmail"></img>
+                  <img src= {"images/gmail.jpg"} height="50px" width="100px" alt="Gmail"></img>
                  </div>
                  <div className="col-lg-4">
                   <button id="authorize-button" onClick={this.gmailLogin} className="btn btn-primary pull-right">Login</button>
