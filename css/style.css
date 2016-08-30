@@ -1,54 +1,23 @@
-.container-fluid{
-  background-color: transparent;
-  font-family: arial,sans-serif;
+.navbar-nav>li>a{
+  color: #FFFFFF;
 }
-.btn {
-     padding: 0px;
-     cursor: pointer;
-     margin-top: 15px;
+.nav{
+  background-color: #3B5998;
 }
-
-#composebutton,#authorize-button,#cancel,#send{
-  padding: 10px; !important
+body{
+  background-color: #DFE3EE;
 }
-
-.btn-link,.btn-link:link, .btn-link:visited, .btn-link:hover, .btn-link:active,.btn-focus,.btn {
-    color: #333; !important
-    text-decoration: none; !important
-    padding: 0px; !important
+mark{
+  background-color: #ffcccc;
+  color:black;
 }
-.row{
-  padding-top: 10px;
+#LeftPane{
+  margin-top: 20px;
+}
+#Viewmodelheader{
+  margin-top: 10px;
 }
 
 table {
-      table-layout: fixed;
-      word-wrap: break-word;
-  }
-
-table th, table td { overflow: hidden; }
-
-.modal-dialog{
-  width: 800px;!important
-}
-
-
-.ModalClass {
-    position: absolute;
-    top: 100px;
-    left: 200px;
-    right: 200px;
-    bottom: 175px;
-  }
-  .OverlayClass {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-  }
-
-.form-control{
-  width: 60%; !important
-  display: inline;!important
+    table-layout: fixed;
 }

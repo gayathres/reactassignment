@@ -48,9 +48,9 @@ var RightPane = React.createClass({
   });
 
     return (
-      <div className="col-lg-10">
-      <table className="table table-hover col-lg-10">
-                    {InboxMail}
+      <div className="col-lg-12">
+      <table className="table table-hover table-striped col-lg-12">
+        {InboxMail}
       </table>
         </div>
     )

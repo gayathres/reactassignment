@@ -1,7 +1,6 @@
 var React = require('react');
 var LeftPane = require('./LeftPane');
 var RightPane = require('./RightPane');
-var Modal = require('./ComposeModel');
 var loadedData = false;
 var loadedMessages = false;
 var loadedSpecificMessages = false;
@@ -57,7 +56,8 @@ var GmailBox = React.createClass({
       }
     }, 500);
     this.allLabels();
-
+    document.getElementById("authorize-button").innerHTML= "Logout";
+    document.getElementById("loginid").innerHTML="s.gayathri1989@gmail.com";
   },
 
 
@@ -151,17 +151,20 @@ var GmailBox = React.createClass({
 
     return(
       <div className="GmailBox">
-          <div className="container">
-
+          <div className="container-fluid col-lg-12">
             <div className="row">
-
                  <div className="col-lg-8 pull-left">
-                   <h2>React Mails</h2>
+                  <img src= {images/gmail.jpg} height="50px" width="70px" alt="Gmail"></img>
                  </div>
-                 <div className="col-lg-1">
+                 <div className="col-lg-4">
                   <button id="authorize-button" onClick={this.gmailLogin} className="btn btn-primary pull-right">Login</button>
                   </div>
              </div>
+             <div className="row">
+                  <div className="col-lg-12 pull-right">
+                  <p id="loginid"></p>
+                   </div>
+              </div>
               <div className="row">
                 <div className="col-lg-2">
                    {leftPanel}

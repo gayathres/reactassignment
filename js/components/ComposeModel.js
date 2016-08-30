@@ -1,16 +1,14 @@
 var React = require('react');
-var Modal = require('react-modal');
 
 var ComposeModel = React.createClass({
 
   getInitialState: function() {
-    return { to: '', subject: '',messagebody: '' };
+    return {modalIsOpen: true, to: '', subject: '',messagebody: '' };
   },
-  handleModalCloseRequest: function() {
-      this.setState({modalIsOpen: false});
-      console.log("compose Model");
-      console.log(this.state.modalIsOpen);
+  openModal: function() {
+  this.setState({modalIsOpen: true});
   },
+
   handleSaveClicked: function() {
     var accessToken = localStorage.getItem('gToken');
     console.log("Access token: "+accessToken);
@@ -39,7 +37,7 @@ var ComposeModel = React.createClass({
      success: function(data)
      {
        console.log("success enters");
-       this.setState({modalIsOpen: false,to: '', subject: '',messagebody: ''});
+       this.setState({to: '', subject: '',messagebody: ''});
 
      }.bind(this),
      async: false,
@@ -61,55 +59,59 @@ var ComposeModel = React.createClass({
     },
   render: function(){
     return(
-        <Modal
-          className="ModalClass"
-          overlayClassName="OverlayClass"
-          closeTimeoutMS={150}
-          isOpen={this.props.modalIsOpen}
-          onRequestClose={this.handleModalCloseRequest}
-        >
-          <div className="modal-content">
-            <div className="modal-header">
-              <button type="button" className="close" data-dismiss="modal" onClick={this.handleModalCloseRequest}>
-
-                <span className="sr-only">Close</span>
-              </button>
-              <h4 className="modal-title">New Message</h4>
-            </div>
-            <div className="modal-body">
-            <form className="form-horizontal">
-              <div className="form-group">
-                <label className ="col-lg-2 control-label" htmlFor="inputName">To</label>
-                <div className="col-lg-10">
-                  <input className="form-control" id="inputName" name="to" placeholder="Enter Recipient Mailid" type="text" value={this.state.to}
-          onChange={this.handleToChange}></input>
-                </div>
+      <div>
+        <div className="modal" id="composeModel">
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <button className="close" data-dismiss="modal">X</button>
+                <h3 className="modal-title">New Message</h3>
               </div>
 
-              <div className="form-group">
-                <label className="col-lg-2 control-label" htmlFor="inputEmail">Subject</label>
-                <div className="col-lg-10">
-                  <input className="form-control" id="inputEmail" name="subject" placeholder="Enter Subject Name" type="email" value={this.state.subject}
-          onChange={this.handleSubjectChange}></input>
+              <div className="modal-body">
+              <form className="form-horizontal">
+                <div className="form-group">
+                  <label className ="col-lg-2 control-label" htmlFor="inputName">To</label>
+                  <div className="col-lg-10">
+                    <input className="form-control" id="inputName" name="to" placeholder="Enter Recipient Mailid" type="text" value={this.state.to}
+                      onChange={this.handleToChange}></input>
+                  </div>
                 </div>
+
+                <div className="form-group">
+                  <label className="col-lg-2 control-label" htmlFor="inputEmail">Subject</label>
+                  <div className="col-lg-10">
+                    <input className="form-control" id="inputEmail" name="subject" placeholder="Enter Subject Name" type="email" value={this.state.subject}
+                      onChange={this.handleSubjectChange}></input>
+                  </div>
+                </div>
+
+                <div className="form-group">
+                  <label className="col-lg-2 control-label" htmlFor="inputMessage">Message</label>
+                  <div className="col-lg-10">
+                    <textarea className="form-control" id="inputMessage" name="messagebody" placeholder="Message" rows="10" value={this.state.messagebody}
+                      onChange={this.handleMessagebodyChange}></textarea>
+                  </div>
+                </div>
+              </form>
               </div>
 
-              <div className="form-group">
-                <label className="col-lg-2 control-label" htmlFor="inputMessage">Message</label>
-                <div className="col-lg-10">
-                  <textarea className="form-control" id="inputMessage" name="messagebody" placeholder="Message" rows="10" value={this.state.messagebody}
-          onChange={this.handleMessagebodyChange}></textarea>
+                <div className="modal-footer">
+                  <div class="form-group">
+                  <div class="col-lg-offset-2 col-lg-10">
+                    <span class="btn green fileinput-button">
+                      <input type="file" name="files[]" multiple=""/>
+                    </span>
+                  </div>
                 </div>
-              </div>
-            </form>
 
-            </div>
-            <div className="modal-footer">
-              <button type="button" className="btn btn-default" id="cancel" onClick={this.handleModalCloseRequest}>Cancel</button>
-              <button type="button" className="btn btn-primary" id="send" onClick={this.handleSaveClicked}>Send</button>
+                <button type="button" className="btn btn-default" id="cancel" data-dismiss="modal">Cancel</button>
+                <button type="button" className="btn btn-primary" id="send" data-dismiss="modal" onClick={this.handleSaveClicked}>Send</button>
+              </div>
+              </div>
             </div>
           </div>
-        </Modal>
+  </div>
     );
   }
 })

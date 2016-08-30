@@ -9,13 +9,14 @@ var LeftPane = React.createClass({
   getInitialState: function(){
         return ({modalIsOpen: false})
     },
-    openModal: function() {
+  openModal: function() {
     this.setState({modalIsOpen: true});
-    console.log(this.state.modalIsOpen);
-  },
+    },
+  closeModal: function() {
+      this.setState({modalIsOpen: false});
+      },
 
-
-    render: function(){
+  render: function(){
     var that=this;
     console.log("lfun in LeftPanel: "+that.props.lfun);
     var label = that.props.ldata.map(
@@ -31,12 +32,11 @@ var LeftPane = React.createClass({
       }
     );
     return(
-      <div>
+      <div id="LeftPane">
         <div>
-          <a className= "btn btn-success" onClick={this.openModal} id="composebutton">Compose Mail</a>
-            {this.state.modalIsOpen ? <Modal modalIsOpen={this.state.modalIsOpen} /> : null}
-
-          </div>
+          <a className= "btn btn-success" href="#composeModel" onClick={this.openModal} id="composebutton" data-toggle="modal">Compose Mail</a>
+          {this.state.modalIsOpen?<Modal closeModal={this.closeModal} /> : null}
+        </div>
           {label}
       </div>
     );
