@@ -56,6 +56,7 @@ var GmailBox = React.createClass({
       }
     }, 500);
     this.allLabels();
+    this.getmsgIDS('INBOX');
     document.getElementById("authorize-button").innerHTML= "Logout";
     document.getElementById("loginid").innerHTML="s.gayathri1989@gmail.com";
   },
