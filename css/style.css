@@ -21,3 +21,14 @@ mark{
 table {
     table-layout: fixed;
 }
+
+#RightFrom,#RightSubject,#RightDate{
+  width:320px;
+}
+a{
+  text-decoration: none;!important
+}
+
+#messageinfo{
+  padding-bottom: 1em;
+}

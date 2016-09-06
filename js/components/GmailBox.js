@@ -106,7 +106,7 @@ var GmailBox = React.createClass({
         }
         this.setState({msgData:arr});
         //loadedData=true;
-        //console.log(data);
+        console.log(arr);
       }.bind(this),
       error: function(xhr, status, err) {
         console.error(err.toString());
